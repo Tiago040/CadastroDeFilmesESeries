@@ -2,6 +2,8 @@ package com.movies.informacoes_cinema.model;
 
 import jakarta.persistence.*;
 
+import java.util.List;
+
 // Entity transforma uma clase em uma entidade do BD
 // JPA (Java Persistence API)
 @Entity
@@ -15,16 +17,19 @@ public class FilmeModel {
     private String titulo;
     private int anoDeLancamento;
     private int duracao;
+    private float avaliacao;
     private String genero;
     private String atores;
     private String sinopse;
 
+
     public FilmeModel() {}
 
-    public FilmeModel(String titulo, int anoDeLancamento, int duracao, String genero, String atores, String sinopse) {
+    public FilmeModel(String titulo, int anoDeLancamento, int duracao, float avaliacao, String genero, String atores, String sinopse) {
         this.titulo = titulo;
         this.anoDeLancamento = anoDeLancamento;
         this.duracao = duracao;
+        this.avaliacao = avaliacao;
         this.genero = genero;
         this.atores = atores;
         this.sinopse = sinopse;
@@ -52,6 +57,14 @@ public class FilmeModel {
 
     public void setDuracao(int duracao) {
         this.duracao = duracao;
+    }
+
+    public float getAvaliacao() {
+        return avaliacao;
+    }
+
+    public void setAvaliacao(float avaliacao) {
+        this.avaliacao = avaliacao;
     }
 
     public String getGenero() {
