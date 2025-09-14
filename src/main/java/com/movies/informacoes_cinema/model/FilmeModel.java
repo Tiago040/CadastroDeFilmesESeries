@@ -13,7 +13,7 @@ public class FilmeModel {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY) //gera as id's automaticamente e o
     // IDENTITY como números sequenciais.
-    protected Long id;
+    private Long id;
     private String titulo;
     private int anoDeLancamento;
     private int duracao;
@@ -25,7 +25,8 @@ public class FilmeModel {
 
     public FilmeModel() {}
 
-    public FilmeModel(String titulo, int anoDeLancamento, int duracao, float avaliacao, String genero, String atores, String sinopse) {
+    public FilmeModel(Long id, String titulo, int anoDeLancamento, int duracao, float avaliacao, String genero, String atores, String sinopse) {
+        this.id = id;
         this.titulo = titulo;
         this.anoDeLancamento = anoDeLancamento;
         this.duracao = duracao;
@@ -33,6 +34,14 @@ public class FilmeModel {
         this.genero = genero;
         this.atores = atores;
         this.sinopse = sinopse;
+    }
+
+    public Long getId() {
+        return id;
+    }
+
+    public void setId(Long id) {
+        this.id = id;
     }
 
     public String getTitulo() {
