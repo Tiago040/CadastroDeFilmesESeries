@@ -7,6 +7,7 @@ import com.movies.informacoes_cinema.service.ApiService;
 import com.movies.informacoes_cinema.service.Conversor;
 import com.movies.informacoes_cinema.service.FilmeService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Component;
 
 import java.util.ArrayList;
@@ -20,7 +21,8 @@ public class Principal {
     final Conversor conversor = new Conversor();
     final Scanner scanner = new Scanner(System.in);
     final String endereco = "http://www.omdbapi.com/?t=";
-    final String apiKey = "&apikey=35210aeb";
+    @Value("${api.key}")
+    private String apiKey;
     @Autowired
     private FilmeService filmeService;
     FilmeRepository filmeRepository;
