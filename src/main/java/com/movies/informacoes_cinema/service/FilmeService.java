@@ -6,6 +6,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
+import java.util.Optional;
 
 @Service
 public class FilmeService {
@@ -26,4 +27,17 @@ public class FilmeService {
 
     //Delete
     public void delete(Long id) {filmeRepository.deleteById(id);}
+
+    public void deleteNome(String titulo) {
+        Optional<FilmeModel> filmeModelOptional = filmeRepository.findByTitulo(titulo);
+        
+        if (filmeModelOptional.isPresent()) {
+            FilmeModel filmeParaDeletar = filmeModelOptional.get();
+            filmeRepository.delete(filmeParaDeletar);
+            System.out.println("Filme deletado com sucesso");
+        } else {
+            System.out.println("Filme não encontrado com o título" + titulo);
+        }
+    }
+
 }

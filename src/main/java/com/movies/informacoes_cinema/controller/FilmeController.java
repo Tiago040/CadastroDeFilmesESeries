@@ -9,10 +9,12 @@ import java.util.List;
 
 @RestController
 @RequestMapping("/consulta")
+@CrossOrigin(origins = "*")
 public class FilmeController {
 
     //injeção de dependência
-    private final FilmeService filmeService;
+    @Autowired
+    private FilmeService filmeService;
 
     public FilmeController(FilmeService filmeService) {
         this.filmeService = filmeService;
@@ -23,6 +25,12 @@ public class FilmeController {
         return filmeService.getAll();
     }
 
-    @PostMapping
+    @PostMapping("/{id}")
     public FilmeModel create(@RequestBody FilmeModel filmeModel) {return filmeService.save(filmeModel);}
+
+
+    @DeleteMapping("/{id}")
+    public void delete(@PathVariable Long id) {
+        filmeService.delete(id);
+    }
 }

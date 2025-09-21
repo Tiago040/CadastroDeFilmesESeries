@@ -2,8 +2,6 @@ package com.movies.informacoes_cinema.model;
 
 import jakarta.persistence.*;
 
-import java.util.List;
-
 // Entity transforma uma clase em uma entidade do BD
 // JPA (Java Persistence API)
 @Entity
@@ -16,7 +14,7 @@ public class FilmeModel {
     private Long id;
     private String titulo;
     private int anoDeLancamento;
-    private int duracao;
+    private String duracao;
     private float avaliacao;
     private String genero;
     private String atores;
@@ -25,15 +23,15 @@ public class FilmeModel {
 
     public FilmeModel() {}
 
-    public FilmeModel(Long id, String titulo, int anoDeLancamento, int duracao, float avaliacao, String genero, String atores, String sinopse) {
-        this.id = id;
-        this.titulo = titulo;
-        this.anoDeLancamento = anoDeLancamento;
-        this.duracao = duracao;
-        this.avaliacao = avaliacao;
-        this.genero = genero;
-        this.atores = atores;
-        this.sinopse = sinopse;
+    public FilmeModel(Dados dados) {
+        //this.id = id;
+        this.titulo = dados.titulo();
+        this.anoDeLancamento = dados.anoLancamento();
+        this.duracao = dados.duracao();
+        this.avaliacao = dados.avaliacao();
+        this.genero = dados.genero();
+        this.atores = dados.atores();
+        this.sinopse = dados.sinopse();
     }
 
     public Long getId() {
@@ -60,11 +58,11 @@ public class FilmeModel {
         this.anoDeLancamento = anoDeLancamento;
     }
 
-    public int getDuracao() {
+    public String getDuracao() {
         return duracao;
     }
 
-    public void setDuracao(int duracao) {
+    public void setDuracao(String duracao) {
         this.duracao = duracao;
     }
 
@@ -98,5 +96,18 @@ public class FilmeModel {
 
     public void setSinopse(String sinopse) {
         this.sinopse = sinopse;
+    }
+
+    @Override
+    public String toString() {
+        return "FilmeModel{" +
+                "titulo='" + titulo + '\'' +
+                ", anoDeLancamento='" + anoDeLancamento + '\'' +
+                ", duracao=" + duracao +
+                ", avaliacao=" + avaliacao +
+                ", genero='" + genero + '\'' +
+                ", atores='" + atores + '\'' +
+                ", sinopse='" + sinopse + '\'' +
+                '}';
     }
 }
